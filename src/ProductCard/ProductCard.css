@@ -1,0 +1,11 @@
+.productCard {
+   width: 200px;
+   border-radius: 16px;
+   border: 1px solid red;
+   padding: 20px;
+   text-align: center;
+   margin: 0 auto;
+}
+.cardImg {
+   max-height: 150px;
+}
