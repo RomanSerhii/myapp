@@ -10,7 +10,7 @@ export const ProductCard = (props) => {
   };
 
   return (
-    <div>
+    <div className="main">
       {isProductCardtVisible && (
         <div className="productCard">
           <h2>{props.title}</h2>
@@ -19,11 +19,11 @@ export const ProductCard = (props) => {
           </div>
           <h4>{props.description}</h4>
           <h3>{props.price}</h3>
+          <button className="btn" onClick={productCardVisible}>
+            Hide Product Card
+          </button>
         </div>
       )}
-      <button className="btn" onClick={productCardVisible}>
-        Hide Card product
-      </button>
     </div>
   );
 };

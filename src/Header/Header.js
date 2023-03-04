@@ -34,7 +34,9 @@ function Header() {
           <button className="btn" onClick={decrementCount}>
             Decrement
           </button>
-          <button onClick={changeSmthInTodo}>Change smth in todo</button>
+          <button className="btn" onClick={changeSmthInTodo}>
+            Change smth in todo
+          </button>
           <div>{todos[0]}</div>
           <div>{todos[1]}</div>
           <hr />

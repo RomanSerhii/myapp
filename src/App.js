@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Header from "./Header/Header";
 import ProductCard from "./ProductCard/ProductCard";
+import { createContext } from "react";
+import ReactSwitch from "react-switch";
 import "./App.css";
 import "./HW1-wrap.css";
 
@@ -44,6 +46,8 @@ const products = [
   // add more products here
 ];
 
+export const ThemeContext = createContext(null);
+
 function App() {
   const [visibleProductsId, setVisibleProductsIndex] = useState(0);
 
@@ -56,23 +60,39 @@ function App() {
 
   const visibleProducts = products.slice(visibleProductsId);
 
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  };
+
   return (
     <div className="App">
       <h1>My React App</h1>
       <Header />
-      <h2>HomeWork 1</h2>
-      <div className="hw1_wrap">
-        {visibleProducts.map((product, id) => (
-          <ProductCard key={id} {...product} />
-        ))}
-      </div>
-      <button className="btn" onClick={removeFirstProduct}>
-        Remove product card
-      </button>
-      <button className="btn" onClick={showFirstProduct}>
-        Show product card
-      </button>
-      <hr />
+      <ThemeContext.Provider value={(theme, toggleTheme)}>
+        <div className="homework1" id={theme}>
+          <div>
+            <h2 className="chng_txt_theme">HomeWork 1</h2>
+            <div className="switch">
+              <label>{theme === "light" ? "Light Mode" : "Dark Mode"}</label>
+              <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+            </div>
+          </div>
+          <div className="hw1_wrap">
+            {visibleProducts.map((product, id) => (
+              <ProductCard key={id} {...product} />
+            ))}
+          </div>
+          <button className="btn showbtn" onClick={removeFirstProduct}>
+            Remove Product Card
+          </button>
+          <button className="btn showbtn" onClick={showFirstProduct}>
+            Show Product Card
+          </button>
+          <hr />
+        </div>
+      </ThemeContext.Provider>
     </div>
   );
 }
