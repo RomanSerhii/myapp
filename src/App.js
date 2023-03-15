@@ -3,6 +3,12 @@ import Header from "./Header/Header";
 import ProductCard from "./ProductCard/ProductCard";
 import { createContext } from "react";
 import ReactSwitch from "react-switch";
+import ResoursesList from "./ResourcesList/ResoursesList";
+import PostList from "./PostsList/PostsList";
+import CommentsList from "./CommentsList/CommentsList";
+import AlbumsList from "./AlbumsList/AlbumsList";
+import PhotosList from "./PhotosList/PhotosList";
+import InputsForm from "./InputsForm/InputsForm";
 import "./App.css";
 import "./HW1-wrap.css";
 
@@ -93,6 +99,17 @@ function App() {
           <hr />
         </div>
       </ThemeContext.Provider>
+      <ResoursesList />
+      <div>
+        <h1>HomeWork 2</h1>
+        <PostList />
+        <CommentsList />
+        <AlbumsList />
+        <PhotosList />
+      </div>
+      <div>
+        <InputsForm />
+      </div>
     </div>
   );
 }
